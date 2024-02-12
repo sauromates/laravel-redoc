@@ -13,6 +13,7 @@ return [
         'name' => env('REDOC_PATH_NAME', 'docs'),
         'url' => env('REDOC_PATH_URL', 'api/docs'),
         'middleware' => [
+            \JustSteveKing\Laravel\LaravelRedoc\Middleware\BundleOpenApiSpecification::class,
             //\App\Http\Middleware\BasicAuthentication::class,
         ],
     ],
@@ -26,7 +27,12 @@ return [
     |
     */
     'openapi' => [
-        'path' => env('REDOC_OPENAPI_PATH', 'http://petstore.swagger.io/v2/swagger.json')
+        'path' => env('REDOC_OPENAPI_PATH', 'http://petstore.swagger.io/v2/swagger.json'),
+        'bundle' => [
+            'bundler' => null,
+            'storagePath' => '',
+            'rootFile' => '',
+        ],
     ],
 
     'config' => [
@@ -82,7 +88,7 @@ return [
         |--------------------------------------------------------------------------
         |
         | If true clicking second time on expanded menu item will collapse it.
-        | 
+        |
         | Default: true
         |
         | Supported: "true", "false"

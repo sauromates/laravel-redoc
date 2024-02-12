@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 class RedocServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             // Publish Config
@@ -32,7 +32,7 @@ class RedocServiceProvider extends ServiceProvider
         );
     }
 
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(
             __DIR__ . '/../config/redoc.php',
